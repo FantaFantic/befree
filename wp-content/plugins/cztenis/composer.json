@@ -1,9 +1,7 @@
 {
     "require": {
         "htmlburger/carbon-fields-plugin": "^3.3",
-        "htmlburger/carbon-fields": "^3.3",
-        "phpoffice/phpword": "^1.2",
-        "phpoffice/phpspreadsheet": "^2.0"
+        "htmlburger/carbon-fields": "^3.3"
     },
     "config": {
         "allow-plugins": {
