@@ -65,9 +65,42 @@ if (!class_exists('CZtenisDruzstva')) {
 
             function include_druzstvo_page()
             {
-                  ob_start();
-                  include MY_PLUGIN_PATH . 'includes/templates/druzstvo.php';
-                  return ob_get_clean();
+                  // ob_start();
+                  // include MY_PLUGIN_PATH . 'includes/templates/druzstvo.php';
+                  // return ob_get_clean();
+
+                  $url = $this->get_druzstvo_url();
+
+                  // Check if the URL is valid
+                  if (filter_var($url, FILTER_VALIDATE_URL)) {
+                      $content = file_get_contents($url);
+          
+                      // Check if content retrieval was successful
+                      if ($content !== false) {
+                          $doc = new DOMDocument();
+                          libxml_use_internal_errors(true); // Disable libxml errors
+                          $doc->loadHTML($content);
+                          libxml_clear_errors(); // Clear any libxml errors
+          
+                          $xpath = new DOMXPath($doc);
+          
+                          // Find the div with class "span12"
+                          $span12Div = $xpath->query('//div[@class="span12"]')->item(0);
+          
+                          // Output the content of the found div
+                          if ($span12Div) {
+                              echo '<div class="span12">' . $doc->saveHTML($span12Div) . '</div>';
+                          } else {
+                              echo 'Div with class "span12" not found in the fetched content.';
+                          }
+                      } else {
+                          echo 'Error fetching content from URL.';
+                      }
+                  } else {
+                      echo 'Invalid URL.';
+                  }
+
+
             }
 
             function get_druzstvo_url()
