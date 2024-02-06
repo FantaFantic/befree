@@ -37,13 +37,3 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
 } else {
       echo 'Neexistující URL.';
 }
-
-
-?>
-
-<style>
-      div.span12 a img {
-            border: 0;
-            display: none;
-      }
-</style>

@@ -106,10 +106,10 @@ if (!class_exists('CZtenisDruzstva')) {
 
             function replace_image_links($content)
             {
-                  // Replace image links with Dashicons and make them clickable
-                  $content = preg_replace('/<a\s+([^>]+)><img\s+([^>]+)><\/a>/', '<a $1><span class="dashicons dashicons-code-standards"></span><span style="display:none;">$2</span></a>', $content);
-
-                  return $content;
+                // Replace image links with placeholders and make them clickable
+                $content = preg_replace('/<a\s+([^>]+)><img\s+([^>]+)><\/a>/', '<a $1>*<span style="display:none;">$2</span></a>', $content);
+        
+                return $content;
             }
       }
 
