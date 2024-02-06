@@ -3,7 +3,27 @@
 if (!defined('ABSPATH')) {
       die('Neoprávněný přístup!');
 }
+?>
 
+
+
+<style>
+    .wrapper {
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto;
+        overflow-y: auto;
+        white-space: nowrap;
+    }
+
+    .span12 {
+        display: inline-block;
+    }
+</style>
+
+<div class="wrapper">
+
+<?php
 
 $cztenis_druzstva = CZtenisDruzstva::get_instance();
 
@@ -37,3 +57,7 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
 } else {
       echo 'Neexistující URL.';
 }
+
+?>
+
+</div>
