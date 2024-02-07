@@ -1,0 +1,13 @@
+2024-02-07T15:52:44+00:00 CRITICAL Uncaught Error: Class "Carbon_Fields\Carbon_Fields" not found in C:\xampp\htdocs\developer-wordpress\wp-content\plugins\fantic-woo-description\FanticWooDescription.php:65
+Stack trace:
+#0 C:\xampp\htdocs\developer-wordpress\wp-includes\class-wp-hook.php(324): FanticWooDescription->load_carbon_fields('')
+#1 C:\xampp\htdocs\developer-wordpress\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp\htdocs\developer-wordpress\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\developer-wordpress\wp-settings.php(621): do_action('after_setup_the...')
+#4 C:\xampp\htdocs\developer-wordpress\wp-config.php(97): require_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\developer-wordpress\wp-load.php(50): require_once('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\developer-wordpress\wp-admin\admin.php(34): require_once('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\developer-wordpress\wp-admin\plugins.php(10): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+  thrown in C:\xampp\htdocs\developer-wordpress\wp-content\plugins\fantic-woo-description\FanticWooDescription.php on line 65
+

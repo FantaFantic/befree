@@ -1,0 +1,9 @@
+.ht-product .ht-product-inner {
+
+      border-radius: 20px;
+}
+
+
+.ht-product .ht-product-inner .ht-product-content {
+     background: lightskyblue;
+}
