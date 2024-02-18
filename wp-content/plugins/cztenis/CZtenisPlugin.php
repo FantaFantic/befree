@@ -41,6 +41,7 @@ if (!class_exists('CZtenisPlugin')) {
             public function initialize()
             {
                   include_once MY_PLUGIN_PATH . 'includes/CZtenisDruzstva.php';
+                  include_once MY_PLUGIN_PATH . 'includes/CZtenisStatistiky.php';
             }
 
       }
