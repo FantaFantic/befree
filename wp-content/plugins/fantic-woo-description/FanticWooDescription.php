@@ -52,7 +52,7 @@ if (!class_exists('FanticWooDescription')) {
 
 
 
-                  add_action('woocommerce_after_shop_loop_item', array($this, 'display_product_description'), 30);
+                  add_action('woolentor_woocommerce_product_content', array($this, 'display_product_description'), 30);
                   //add_action('woocommerce_after_shop_loop_item_title', array($this, 'display_product_description'), 30);
             }
 

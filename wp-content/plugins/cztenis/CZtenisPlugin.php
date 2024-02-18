@@ -26,6 +26,15 @@ if (!class_exists('CZtenisPlugin')) {
                   require_once(MY_PLUGIN_PATH . '/vendor/autoload.php');
 
                   wp_enqueue_script('jquery');
+
+                  add_shortcode('include_react_test', array($this, 'include_react_test'));
+            }
+
+            function include_react_test()
+            {
+                  ob_start();
+                  include MY_PLUGIN_PATH . 'includes/react-test/index.html';
+                  return ob_get_clean();
             }
 
 
