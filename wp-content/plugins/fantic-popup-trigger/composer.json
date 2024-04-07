@@ -1,0 +1,6 @@
+{
+    "name": "fantic/popup-trigger",
+    "require": {
+        "htmlburger/carbon-fields": "^3.6"
+    }
+}
