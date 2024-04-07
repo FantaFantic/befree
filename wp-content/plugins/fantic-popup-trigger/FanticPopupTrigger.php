@@ -45,8 +45,7 @@ if (!class_exists('FanticPopupTrigger')) {
                   add_action('after_setup_theme', array($this, 'load_carbon_fields'));
                   add_action('carbon_fields_register_fields', array($this, 'create_options_page'));
 
-                  add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
-
+                  add_action('elementor/frontend/after_enqueue_scripts', [$this, 'enqueue_scripts']);
             }
 
             function enqueue_scripts() {

@@ -1,16 +1,26 @@
 const triggerPopupLimit = appLocalizer.triggerPopupLimit ?? 5
 const triggerPopupMinutesSession = appLocalizer.triggerPopupMinutesSession ?? 60
 
-function displayPopup(){
+function displayPopup() {
+    console.log("DISPLAYING POPUP");
 
-    console.log("DISPLAYING POPUP")
-    var popup = elementorFrontend.getPopup(appLocalizer.triggerPopupId);
-    if (popup) {
-        popup.show();
+    if (appLocalizer.triggerPopupId && typeof elementorProFrontend !== 'undefined') {
+        if (typeof elementorProFrontend !== 'undefined' && typeof elementorProFrontend.modules.popup !== 'undefined') {
+            try {
+                elementorProFrontend.modules.popup.showPopup({ id: appLocalizer.triggerPopupId });
+                return; // Exit function after successfully displaying popup
+            } catch (exception) {
+                console.log("Error displaying popup:", exception);
+            }
+        } else {
+            console.log("Elementor Pro frontend or popup module not available!");
+        }
+    } else {
+        console.log("TriggerPopupId or Elementor Pro is not available yet. Retrying...");
     }
-    else{
-        console.log("Chybí nastavení elementor popupu!!")
-    }
+    
+    // Retry after a short delay
+    setTimeout(displayPopup, 1000); // Retry after 1 second
 }
 
 
@@ -49,7 +59,9 @@ if (visitsCount === undefined || lastVisitTime === undefined) {
     lastVisitTime = new Date().getTime()
     setCookie("visitCount", visitsCount, 90); // Expires in 90 day
     setCookie("lastVisitTime", lastVisitTime.toString(), 90); // Expires in 90 day
-
+    if (visitsCount >= triggerPopupLimit) {
+        displayPopup()
+    }
 }
 else {
 
@@ -57,6 +69,8 @@ else {
 
     let minutesPassedSinceLastCount = (currentTime - lastVisitTime) / 1000 / 60
 
+    console.log(minutesPassedSinceLastCount)
+    console.log(visitsCount)
 
     if (lastVisitTime === undefined || minutesPassedSinceLastCount > parseFloat(triggerPopupMinutesSession)) {
 
@@ -66,12 +80,13 @@ else {
         setCookie("lastVisitTime", currentTime.toString(), 90); // Expires in 90 days
         setCookie("visitCount", visitsCount, 90); // Expires in 90 days
 
+        if (visitsCount >= triggerPopupLimit) {
+            displayPopup()
+        }
 
     }
 }
 
-if (visitsCount >= triggerPopupLimit) {
-    displayPopup()
-}
+
 
 
